@@ -1,0 +1,143 @@
+if (t == 0)
+  {
+    for (int i = 0; i < sizeof(proc) - 1; i++)
+    {
+      process first;
+      int first_ind = 0;
+      if (i == 0)
+      {
+        first = proc[i];
+      }
+      else if (proc[i].arrivaltime < proc[first_ind].arrivaltime)
+      {
+        first = proc[i];
+        first_ind = i;
+      }
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+    for (int i = 0; i < NUM_PROCESSES; i++)
+  {
+    for(int j = 0; j <= NUM_PROCESSES; j++) {
+      if (j == 0)
+      {
+        first = proc[j];
+      }
+      else if (proc[j].arrivaltime < proc[first_ind].arrivaltime)
+      {
+        first = proc[j];
+        first_ind = j;
+      }
+    }
+    org_proc[i] = first;
+  }
+  
+  if (t > first.arrivaltime)
+  {
+    for(int i = 0; i < NUM_PROCESSES; i++) {
+
+    }
+  }
+
+
+
+
+
+
+
+
+
+    if(t == 0) {
+    return -1;
+  }
+
+  for (int i = 0; i < NUM_PROCESSES; i++)
+  {
+    /* Check if proc is "Ready" */
+    if (proc[i].arrivaltime <= t)
+    {
+      available_count++;
+    }
+  }
+  process proc_arr[available_count];
+  for (int i = 0; i < NUM_PROCESSES; i++)
+  {
+    if (proc[i].arrivaltime <= t)
+    {
+      proc_arr[j] = proc[i];
+      j++;
+    }
+  }
+
+  int proc_arr_ind = t % available_count;
+  curr_proc = proc_arr[proc_arr_ind];
+  for(int i = 0; i<NUM_PROCESSES; i++) {
+    if((curr_proc.arrivaltime == proc[i].arrivaltime) && (curr_proc.remainingtime == proc[i].remainingtime)) {
+      proc_ind = i;
+      return proc_ind;
+    }
+  }
+
+  return proc_ind;
+
+
+
+    /* TODO: Implement scheduling algorithm here */
+  // HINT: consider using a static variable to keep track of the previously scheduled process
+  static process prev_proc;
+  process org_proc[NUM_PROCESSES];
+  process curr_proc;
+  static int prev_proc_ind = 0;
+  int proc_ind;
+  int avlbl_count = 0;
+
+  for(int i = 0; i < NUM_PROCESSES; i++) {
+    if(proc[i].arrivaltime <= t) {
+      proc_ind = i;
+    }
+  }
+
+  return proc_ind;
+
+
+
+
+  ---------------------------------------
+  Lates Roud Robin algorithm
+
+    static process prev_proc;
+  process curr_proc;
+  int proc_mapping[NUM_PROCESSES];
+  static int proc_ind = -1;
+  int prev_proc_ind = 0;
+  int avlbl_count = 0;
+
+  if((t>1) &&(prev_proc_ind != proc_ind)) {
+    prev_proc_ind = proc_ind;
+  }
+
+  for(int i = 0; i < NUM_PROCESSES; i++) {
+    if(proc[i].arrivaltime <= t) {
+      proc_mapping[avlbl_count] = i;
+      avlbl_count++;
+    }
+  }
+  process org_proc[avlbl_count];
+  for (int i = 0; i < avlbl_count; i++)
+  {
+    org_proc[i] = proc[proc_mapping[i]];
+  }
+  for(int i = 0; i< avlbl_count; i++) {
+    
+  }
+
+  return proc_ind;

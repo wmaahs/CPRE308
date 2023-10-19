@@ -1,0 +1,5 @@
+if(i == 0) {
+            result = sixty/i;
+            signal(SIGFPE, fpe_routine);
+            flag = 1;
+        }
