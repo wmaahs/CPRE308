@@ -1,0 +1,116 @@
+
+// From appserver command to parse args
+// DOES NOT WORK
+
+for (i = 0; i < strlen(args); i++)
+                {
+                    if (strcmp(args[i], ' ') == 0)
+                    {
+                        spaceCounter++;
+                        if (spaceCounter == 1)
+                        {
+                            arg1 = args[i - 1];
+                            args = args[i+1];
+                        }
+                        else if(spaceCounter == 2) {
+                            arg2 = args[i-1];
+                            args = args[i+1];
+                        }
+                        else {
+                            //shouldnt get here
+                            break;
+                        }
+                    }
+                    else if (strcmp(args[i], '\0') == 0) {
+                        arg3 = args[i - 1];
+                    }
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Does work but there is a better way
+    /* Pointer to cmnd */
+        char *cmnd;
+        char *args;
+        /* Location of space */
+        char *split = strchr(command, ' ');
+
+        if(split != NULL) {
+            int spaceLocation = (int)(split - command);
+            command[spaceLocation] = '\0';
+
+            cmnd = command; //cmnd points to command
+            args = split + 1;   //args points to whatever is after cmnd
+            int lenArgs = strlen(args);
+            args[lenArgs] = '\0';
+        }
+
+        /* Check for commands */
+
+        /* Initialize Server */
+        if (strcmp(cmnd, "appserver") == 0)
+        {
+            char *numThreads;
+            char *numAccounts;
+            char *outputF;
+            if (args != NULL)
+            {
+                char *space1 = strchr(args, ' ');
+                if(space1 != NULL) {
+                    int space1Loc = (int)(space1 - args);
+                    args[space1Loc] = '\0';
+                    numThreads = args;
+
+                    numAccounts = space1 + 1;
+                }
+                char *space2 = strchr(numAccounts, ' ');
+                if(space2 != NULL) {
+                    int space2Loc = (int)(space2 - numAccounts);
+                    numAccounts[space2Loc] = '\0';
+
+                    outputF = space2 + 1;
+                }
+            }
+            /* Not enough arguments error */
+            else {
+                /* TODO */
+            }
+            numWorkers = *numThreads - '0';
+
+
+
+
+
+
+
+if(!appserver_start(argc, argv)) {
+
+        //error
+        return -1;
+    }
+
+accounts = malloc(numAccounts*sizeof(account));
+
+
+modularize ?
+
+flockfile(out_fp);
+           // For testing
+           printf("output file locked\n");
+           fprintf(out_fp, "%d Balance: %d Starttime: %d Endtime: %d",
+                   curr_req.request_id, check_amnt, curr_req.starttime, curr_req.endtime);
+           // For testing
+           printf("output file unlockded\n");
+           funlockfile(out_fp);
